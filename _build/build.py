@@ -156,7 +156,7 @@ PROJECTS = [
 ]
 
 SERVICES = ["Packaging illustration", "Book covers", "Tattoo design", "Character art",
-            "Pattern design", "Tarot & card decks", "Hand-drawn portraits"]
+            "Pattern design", "Hand-drawn portraits"]
 
 # ---------------------------------------------------------------- HELPERS
 _size_cache = {}
