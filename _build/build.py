@@ -155,6 +155,12 @@ PROJECTS = [
     ),
 ]
 
+# Display order (change this list to reorder the site). Numbers 01-07 follow it automatically.
+ORDER = ["packaging", "pattern-design", "book-covers", "tattoo-art", "tarot", "personal-art", "portraits"]
+PROJECTS.sort(key=lambda p: ORDER.index(p["slug"]))
+for _i, _p in enumerate(PROJECTS, 1):
+    _p["num"] = f"{_i:02d}"
+
 SERVICES = ["Packaging illustration", "Book covers", "Tattoo design", "Character art",
             "Pattern design", "Hand-drawn portraits"]
 
@@ -266,7 +272,7 @@ def build_index():
     cards = []
     for i, p in enumerate(PROJECTS):
         c = p["card"]
-        wide = " wide" if i == len(PROJECTS) - 1 else ""
+        wide = " half" if i in (0, 1, 5, 6) else ""      # layout rows: 2 large, 3 medium, 2 large
         cards.append(f"""    <a class="card reveal{wide}" href="{p['slug']}.html" style="--tint:{c['tint']};--fit:{c['fit']};--pos:{c['pos']}">
       <div class="pic">{img_tag(c['img'], '', lazy=i > 1)}</div>
       <div class="info"><span class="num">{p['num']}</span><div><h3>{e(p['title'])}</h3><span class="yrs">{e(p['years'])}</span></div><span class="arrow" aria-hidden="true">→</span></div>
